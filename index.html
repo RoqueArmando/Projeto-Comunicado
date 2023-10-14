@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicador</title>
+	<!--Inclui o arquivo JavaScript "pizza.js"-->
+	<script src="pizza.js"></script>
+    <link rel="stylesheet" href="styles.css">
+	<!--Inclui o arquivo CSS "style.css"-->
+	<style>
+		body{    
+			background-image: url('imgs/fundo.png'); /* URL da imagem de fundo */
+			background-repeat: no-repeat;
+		}
+		.principal{
+			width: 1040px;
+			height: 450px;
+		}
+		.tela1{
+
+			width:900px;
+			height: 500px;
+			display: inline-block;
+		}
+		.tela2{
+
+			width:700px;
+			height: 500px;
+			display: inline-block;   
+		} 
+	/* Estilos para o timer */
+		.timer-container {
+			display: inline-block;
+			margin: 30px;
+			font-size: 300px;
+			  margin-top:-250px;
+		
+	}
+		#timer{
+			font-size: 70px;
+			padding-right: 30px;
+		
+		
+		}
+	/*Estilo para o botão de alerta */
+		body {
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: right;
+			min-height: 100vh;
+		}
+		#alerta {
+			position: absolute;
+			left: -7100px; /* Define a posição inicial fora da tela */
+			background-color: #ff5733;
+			color: #fff;
+			padding:120px;
+			transition: left 6s ease-in;
+		}
+		#alerta.mostrar {
+			left: 10px; /* Define a posição do alerta no canto esquerdo */
+		}
+	</style>
+</head>
+<body>  
+   <div class="imagem"></div>
+	<div class="screen" id="screen1">
+		<!-- Botão de mostrar alerta -->
+		&nbsp,&nbsp,&nbsp,&nbsp,&nbsp,&nbsp,&nbsp,&nbsp,&nbsp <button id="mostrarAlerta">Clique aqui para informações sobre o software</button>
+		
+		<!-- Div para exibir alerta-->
+		<div id="alerta" class="esquerda">
+		<!-- Conteúdo do alerta -->
+		1º Passo: Pare o mouse sobre qualquer imagem para selecioná-la. A imagem será transferida para a segunda tela.<br>
+		2º Passo: Inicie o cronômetro. O tempo será exibido na segunda tela. Quando o tempo se esgotar,<br>
+		um alerta sonoro será ativado e uma mensagem informará que o cliente está aguardando o pedido.<br><hr>
+		3º Passo: Utilize o botão "Enviar Mensagem para COZINHA" para enviar mensagens para a cozinha.<br>
+		Exemplos de uso:<br>
+		Exemplo 1: Se o cliente precisar de mais de um item específico, você pode usar o botão <br>
+		"Enviar Mensagem para COZINHA" para especificar os itens adicionais necessários.<br>
+		utilize as TECLAS TAB/ENTER como atalho <hr>
+	</div>
+	<!-- Botão para iniciar o cronômetro -->
+	<div class="timer-container">
+		&nbsp <button onclick="startTimer()">Iniciar Cronômetro</button>
+		<img src="imgs/fundo2.jpg" width="400" height="300">
+	
+	</div>
+	       <button onclick="sendMessage(1)">Enviar Menssagem para COZINHA </button>
+ 
+        <div id="message1"></div>	
+    </div>
+	<div class ="principal">
+		<br><br><br><br>
+		<div class="screen" id="screen1"> 
+		&nbsp, &nbsp, &nbsp,  &nbsp, &nbsp, &nbsp
+		<div class= "tela1">
+			<!-- Imagens com eventos de mouseover -->
+			<img src="imgs/portuguesa .png"title="PIZZA PORTUGUESA"onmouseover="mudaImagem(this.title,'portuguesaG.png')">
+			<img src="imgs/pizzahawaii.jpg" title="PIZZA HAWAII" onmouseover="mudaImagem(this.title, 'pizzahawaiiG.jpg')">
+			<img src="imgs/pizzafrangocomCatupiryP.jpg" title="PIZZA FRANGO COM CATUPIRY" onmouseover="mudaImagem(this.title, 'pizzafrangoCatupiryG.jpg')">
+			<img src="imgs/pizzaCalabresaP.jpg" title="PIZZA CALABRESA" onmouseover="mudaImagem(this.title, 'PizzaCalabresaG.jpg')"><br>
+			<img src="imgs/pizzaquatroqueijosP.jpg" title="PIZZA QUATRO QUEIJOS" onmouseover="mudaImagem(this.title, 'pizzaQuatroqueijosG.jpg')">
+			<img src="imgs/pizzapeperoniP.jpg" title="PIZZA PEPERONI" onmouseover="mudaImagem(this.title, 'peperoniG.jpg')"> 
+			<img src="imgs/portuguesa2P.jpg" title="PIZZA PORTUGUESA OPÇÂO 1" onmouseover="mudaImagem(this.title, 'portuguesa2G.jpg')">
+			<img src="imgs/portuguesaP1.jpg" title="PIZZA PORTUGUESA OPÇÂO 2" onmouseover="mudaImagem(this.title, 'portuguesaG1.jpg')"><hr>
+			<img src="imgs/chageladoP.jpg" title="CHÁ GELADO" onmouseover="mudaImagem(this.title, 'chageladoG.jpg')">
+			<img src="imgs/cervejaartesanalP.jpg" title="CERVEJA ARTESANAL" onmouseover="mudaImagem(this.title, 'cervejaartesanalG.jpg')">
+			<img src="imgs/limonadaP.jpg" title="LIMONADA" onmouseover="mudaImagem(this.title, 'limonadaG.jpg')">
+			<img src="imgs/aguacomgasP.jpg" title="AGUA COM GAS" onmouseover="mudaImagem(this.title, 'aguacomgasG.jpg')">
+		</div>
+		</div>
+		<!-- Div para exibir mensagens -->
+		<div id="message1"></div>
+	</div>
+    <div class="screen" id="screen2">
+        <br><br><br><br><br><br>
+        
+       <!-- Botão para enviar mensagem para o atendimento -->
+	   <img src="imgs/fundo2.jpg" width="400" height="300">
+	   <button onclick="sendMessage(2)">Enviar Menssagem para ATENDIMENTO</button>
+	   
+       <!-- Div para exibir mensagens -->
+	   <div id="message2"></div>
+    </div>
+		<div class="screen" id="screen2">   
+			<div class="tela2">
+				<br><br><br><br><br>
+				&nbsp, &nbsp, &nbsp, &nbsp, &nbsp,  <img src="imgs/promocao.png" id="imgGrande" title="PROMOÇÃO DO DIA" >			
+			</div>
+			<!-- Div para exibir mensagens -->
+			<div id="message2"></div>
+		</div>
+        <!-- timer-->
+
+		<div class="timer-container">
+		<br>
+				<img src="img/entrega.png">
+			<div id="timer">
+			0:00	
+			</div>
+		
+		</div>
+		<!-- Scripts JavaScript -->
+		<script src="script.js"></script>
+		<script>
+		//Função para mostrar o alerta quando o botão é clicado
+		const botao = document.getElementById("mostrarAlerta");
+		const alerta = document.getElementById("alerta");
+
+		botao.addEventListener("click", () => {
+			alerta.classList.add("mostrar");
+			setTimeout(() => {
+				alerta.classList.remove("mostrar");
+			}, 55000); // O alerta desaparece após 3 segundos
+		});
+
+		let time = 0;
+		const timerElement = document.getElementById("timer");
+		let timerInterval;
+		// Função para atualizar o cronômetro
+		function updateTimer() {
+			const minutes = Math.floor(time / 60);
+			const seconds = time % 60;
+			timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+			if (time === 50) {
+				// Toca um som de alerta quando o tempo chega a 50 segundos
+                new Audio('bip.mp3').play();
+				new Audio('bip.mp3').play();
+			}
+			time++;
+				// Exibe um alerta quando o tempo atinge 60 segundos
+			while (time == 60){
+				alert("CLIENTE NA ESPERA!!! ");
+			time = time +1;
+			} 
+		}
+		// Função para iniciar o cronômetro
+		function startTimer() {
+			clearInterval(timerInterval);
+			time = 0;
+			timerInterval = setInterval(updateTimer, 1000);
+		}
+		// Função para exibir a mensagem de boas-vindas quando a página carrega
+		function exibirMensagemInicial() {
+			alert("Seja bem-vindo ao Sistema Comunicador! ");
+			alert("Por favor, Clique na aba MAXIMIZAR, expanda a tela para que ela ocupe ambas as telas. Você pode fazer isso com a ajuda do mouse ");
+		}
+		// Chama a função de exibir mensagem quando a página carrega
+		window.onload = exibirMensagemInicial;
+	</script>
+</body>
+</html> 
